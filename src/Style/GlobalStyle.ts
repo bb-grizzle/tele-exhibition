@@ -6,6 +6,12 @@ const GlobalStyle = createGlobalStyle`
   *{
     text-decoration:none;
     list-style: none;
+    box-sizing: border-box;
+  }
+  body{
+    font-family: roboto,sans-serif;
+    font-weight: 400;
+    font-style: normal;
   }
 
 `;

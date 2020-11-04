@@ -4,9 +4,11 @@ import App from "./App";
 import GlobalStyle from "./Style/GlobalStyle";
 import { ThemeProvider } from "styled-components";
 import Theme from "./Style/Theme";
+import MeataContainer from "./Container/MeataContainer";
 
 ReactDOM.render(
 	<React.StrictMode>
+		<MeataContainer />
 		<ThemeProvider theme={Theme}>
 			<GlobalStyle />
 			<App />
