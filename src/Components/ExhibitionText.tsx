@@ -58,7 +58,8 @@ const TitleCustom = styled(Title)<{ hide?: boolean }>`
 	opacity: ${(props) => (props.hide ? 0 : 1)};
 	transition: opacity 0.5s ${(props) => props.theme.transition.default};
 	@media ${media.tablet} {
-		margin-right: 16px;
+		/* margin-right: 16px; */
+		border: 1px solid red;
 	}
 `;
 
@@ -71,7 +72,7 @@ const DetailTitle = styled(TitleCustom)<{ active: boolean }>`
 	max-height: ${(props) => (props.active ? "50vh" : 0)};
 	opacity: ${(props) => (props.active ? 1 : 0)};
 	overflow: hidden;
-	transition: max-height 1s ${(props) => props.theme.transition.default} opa 1s ${(props) => props.theme.transition.default};
+	transition: max-height 1s ${(props) => props.theme.transition.default} opacity 1s ${(props) => props.theme.transition.default};
 `;
 
 const MemberText = styled(Paragraph)`
