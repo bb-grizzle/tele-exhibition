@@ -2,10 +2,11 @@ import React from "react";
 import styled, { css } from "styled-components";
 import media from "../Style/Media";
 import logo_default from "../Asset/center_default.png";
-import { DATA_LOGOWINDOW_ARR } from "../Data/LogoWindow";
+import { DATA_LOGOWINDOW_ARR, LogoWindowProps } from "../Data/LogoWindow";
+import { useIsAboutClicked, useNowData } from "../Context/AppProvider";
 
 // CENTER LOGO
-const Wrppaer = styled.div`
+const Wrppaer = styled.div<{ active: boolean }>`
 	max-width: ${(props) => `${props.theme.size.center}px`};
 	max-height: ${(props) => `${props.theme.size.center}px`};
 	position: absolute;
@@ -14,6 +15,8 @@ const Wrppaer = styled.div`
 	transform: translate(-50%, -50%);
 	width: 50%;
 
+	opacity: ${(props) => (props.active ? 1 : 0)};
+	transition: opacity 0.6s ${(props) => props.theme.transition.default};
 	user-select: none;
 	pointer-events: none;
 
@@ -26,7 +29,8 @@ const Wrppaer = styled.div`
 	}
 
 	@media ${media.tablet} {
-		width: 100%;
+		width: 90%;
+		margin-top: 48px;
 	}
 `;
 
@@ -60,8 +64,9 @@ const WindowIllust = styled(WindowImage)`
 
 const WindowList = styled.li<{ width: number; height: number; left: number; top: number }>`
 	position: absolute;
-	/* overflow: hidden; */
+	${(props) => props.theme.event.active};
 	cursor: pointer;
+	overflow: hidden;
 
 	&:hover {
 		${WindowIllust} {
@@ -96,8 +101,17 @@ const ImageWrapper = styled.div`
 `;
 
 const LogoCenter = () => {
+	const { isAboutClicked } = useIsAboutClicked();
+	const { setNowData } = useNowData();
+
+	const handleEnter = (data: LogoWindowProps) => {
+		setNowData(data);
+	};
+	const handleOut = () => {
+		setNowData(undefined);
+	};
 	return (
-		<Wrppaer>
+		<Wrppaer active={!isAboutClicked}>
 			<Container>
 				<LogoWrppaer>
 					<Logo src={logo_default} />
@@ -106,7 +120,7 @@ const LogoCenter = () => {
 				<WindowWrapper>
 					{DATA_LOGOWINDOW_ARR.map((el) => {
 						return (
-							<WindowList key={el.id} width={el.width} height={el.height} left={el.left} top={el.top}>
+							<WindowList key={el.id} width={el.width} height={el.height} left={el.left} top={el.top} onMouseEnter={() => handleEnter(el)} onMouseOut={handleOut}>
 								<ImageWrapper>
 									<WindowImage src={el.image} />
 									<WindowIllust src={el.illust} />

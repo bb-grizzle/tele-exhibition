@@ -20,6 +20,16 @@ const Theme = {
 	},
 	transition: {
 		default: `cubic-bezier(0.65, 0.01, 0, 0.96)`
+	},
+	event: {
+		disable: css`
+			pointer-events: none;
+			user-select: none;
+		`,
+		active: css`
+			pointer-events: auto;
+			user-select: auto;
+		`
 	}
 };
 

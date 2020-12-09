@@ -16,8 +16,10 @@ import window_6_illust from "../Asset/window/illust/window_06_drawing.png";
 import window_7_illust from "../Asset/window/illust/window_07_drawing.png";
 import window_8_illust from "../Asset/window/illust/window_08_drawing.png";
 
-interface LogoWindowProps {
+export interface LogoWindowProps {
 	id: number;
+	name: string | undefined;
+	title: string | undefined;
 	width: number;
 	height: number;
 	left: number;
@@ -29,6 +31,8 @@ interface LogoWindowProps {
 export const DATA_LOGOWINDOW_ARR: LogoWindowProps[] = [
 	{
 		id: 0,
+		name: undefined,
+		title: undefined,
 		image: window_1,
 		illust: window_1_illust,
 		height: 5.5357136726379395,
@@ -38,6 +42,8 @@ export const DATA_LOGOWINDOW_ARR: LogoWindowProps[] = [
 	},
 	{
 		id: 1,
+		name: "Hyunju Lee",
+		title: "현주 타이틀",
 		image: window_2,
 		illust: window_2_illust,
 		height: 20.892854690551758,
@@ -47,6 +53,8 @@ export const DATA_LOGOWINDOW_ARR: LogoWindowProps[] = [
 	},
 	{
 		id: 2,
+		name: "Jieun Lee",
+		title: "지은 타이틀",
 		image: window_3,
 		illust: window_3_illust,
 		height: 8.749999046325684,
@@ -56,6 +64,8 @@ export const DATA_LOGOWINDOW_ARR: LogoWindowProps[] = [
 	},
 	{
 		id: 3,
+		name: "Haein Seo",
+		title: "혜인 타이틀",
 		image: window_4,
 		illust: window_4_illust,
 		height: 30.357139587402344,
@@ -65,6 +75,8 @@ export const DATA_LOGOWINDOW_ARR: LogoWindowProps[] = [
 	},
 	{
 		id: 4,
+		name: undefined,
+		title: undefined,
 		image: window_5,
 		illust: window_5_illust,
 		height: 12.142855644226074,
@@ -74,6 +86,8 @@ export const DATA_LOGOWINDOW_ARR: LogoWindowProps[] = [
 	},
 	{
 		id: 5,
+		name: "Taewoong Yoon",
+		title: "태웅 타이틀",
 		image: window_6,
 		illust: window_6_illust,
 		height: 16.071426391601562,
@@ -83,6 +97,8 @@ export const DATA_LOGOWINDOW_ARR: LogoWindowProps[] = [
 	},
 	{
 		id: 6,
+		name: undefined,
+		title: undefined,
 		image: window_7,
 		illust: window_7_illust,
 		height: 14.999998092651367,
@@ -92,6 +108,8 @@ export const DATA_LOGOWINDOW_ARR: LogoWindowProps[] = [
 	},
 	{
 		id: 7,
+		name: "Yoonseo Ko",
+		title: "윤서 타이틀",
 		image: window_8,
 		illust: window_8_illust,
 		height: 10.178570747375488,

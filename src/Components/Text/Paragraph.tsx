@@ -26,7 +26,7 @@ const Text = styled.p<{ type: ParagraphType }>`
 const Paragraph: React.FC<ParagraphProps> = ({ text, className, type = ParagraphType.REGULAR, onClick }) => {
 	return (
 		<Text className={className} type={type} onClick={onClick}>
-			{Array.isArray(text) ? text.map((t) => <span>{t}</span>) : text}
+			{Array.isArray(text) ? text.map((t, index) => <span key={index}>{t}</span>) : text}
 		</Text>
 	);
 };

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import media from "./Style/Media";
 import LogoCenter from "./Components/LogoCenter";
 import ExhibitionText from "./Components/ExhibitionText";
+import AppProvider from "./Context/AppProvider";
 
 const Wrapper = styled.div`
 	background-color: ${(props) => props.theme.color.black};
@@ -34,10 +35,12 @@ const App = () => {
 
 	return (
 		<Wrapper>
-			<Inner>
-				<ExhibitionText />
-				<LogoCenter />
-			</Inner>
+			<AppProvider>
+				<Inner>
+					<ExhibitionText />
+					<LogoCenter />
+				</Inner>
+			</AppProvider>
 		</Wrapper>
 	);
 };
