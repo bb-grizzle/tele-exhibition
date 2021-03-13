@@ -4,7 +4,7 @@ import React from "react";
 export enum ParagraphType {
 	BOLD = 700,
 	MEDIUM = 500,
-	REGULAR = 400
+	REGULAR = 400,
 }
 
 interface ParagraphProps {
@@ -12,6 +12,8 @@ interface ParagraphProps {
 	className?: string;
 	type?: ParagraphType;
 	onClick?: () => void;
+	onMouseEnter?: () => void;
+	onMouseLeave?: () => void;
 }
 
 const Text = styled.p<{ type: ParagraphType }>`
@@ -23,10 +25,19 @@ const Text = styled.p<{ type: ParagraphType }>`
 		display: block;
 	}
 `;
-const Paragraph: React.FC<ParagraphProps> = ({ text, className, type = ParagraphType.REGULAR, onClick }) => {
+const Paragraph: React.FC<ParagraphProps> = ({ text, className, type = ParagraphType.REGULAR, onClick, onMouseEnter, onMouseLeave }) => {
 	return (
 		<Text className={className} type={type} onClick={onClick}>
-			{Array.isArray(text) ? text.map((t, index) => <span key={index}>{t}</span>) : text}
+			{Array.isArray(text)
+				? text.map((t, index) => {
+						console.log(t);
+						return (
+							<span key={index} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+								{t}
+							</span>
+						);
+				  })
+				: text}
 		</Text>
 	);
 };

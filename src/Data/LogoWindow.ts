@@ -38,18 +38,18 @@ export const DATA_LOGOWINDOW_ARR: LogoWindowProps[] = [
 		height: 5.5357136726379395,
 		width: 11.071427345275879,
 		left: 15.6796875,
-		top: 14.28564453125
+		top: 14.28564453125,
 	},
 	{
 		id: 1,
 		name: "Hyunju Lee",
-		title: "현주 타이틀",
+		title: "방구석 꽃 축제",
 		image: window_2,
 		illust: window_2_illust,
 		height: 20.892854690551758,
 		width: 17.857141494750977,
 		left: 31.9296875,
-		top: 23.75
+		top: 23.75,
 	},
 	{
 		id: 2,
@@ -60,7 +60,7 @@ export const DATA_LOGOWINDOW_ARR: LogoWindowProps[] = [
 		height: 8.749999046325684,
 		width: 13.035713195800781,
 		left: 54.4296875,
-		top: 35.89306640625
+		top: 35.89306640625,
 	},
 	{
 		id: 3,
@@ -71,7 +71,7 @@ export const DATA_LOGOWINDOW_ARR: LogoWindowProps[] = [
 		height: 30.357139587402344,
 		width: 9.464284896850586,
 		left: 80.32421875,
-		top: 14.28564453125
+		top: 14.28564453125,
 	},
 	{
 		id: 4,
@@ -82,18 +82,18 @@ export const DATA_LOGOWINDOW_ARR: LogoWindowProps[] = [
 		height: 12.142855644226074,
 		width: 17.857141494750977,
 		left: 1.21484375,
-		top: 70.35693359375
+		top: 70.35693359375,
 	},
 	{
 		id: 5,
 		name: "Taewoong Yoon",
-		title: "태웅 타이틀",
+		title: "...",
 		image: window_6,
 		illust: window_6_illust,
 		height: 16.071426391601562,
 		width: 30.714279174804688,
 		left: 19.0703125,
-		top: 49.64306640625
+		top: 49.64306640625,
 	},
 	{
 		id: 6,
@@ -104,7 +104,7 @@ export const DATA_LOGOWINDOW_ARR: LogoWindowProps[] = [
 		height: 14.999998092651367,
 		width: 19.107139587402344,
 		left: 54.4296875,
-		top: 70.35693359375
+		top: 70.35693359375,
 	},
 	{
 		id: 7,
@@ -115,6 +115,6 @@ export const DATA_LOGOWINDOW_ARR: LogoWindowProps[] = [
 		height: 10.178570747375488,
 		width: 23.92856788635254,
 		left: 74.78515625,
-		top: 55.53564453125
-	}
+		top: 55.53564453125,
+	},
 ];
