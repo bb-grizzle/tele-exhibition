@@ -59,7 +59,6 @@ const TitleCustom = styled(Title)<{ hide?: boolean }>`
 	transition: opacity 0.5s ${(props) => props.theme.transition.default};
 	@media ${media.tablet} {
 		/* margin-right: 16px; */
-		border: 1px solid red;
 	}
 `;
 
