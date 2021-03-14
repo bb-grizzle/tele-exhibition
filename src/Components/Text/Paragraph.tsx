@@ -30,7 +30,6 @@ const Paragraph: React.FC<ParagraphProps> = ({ text, className, type = Paragraph
 		<Text className={className} type={type} onClick={onClick}>
 			{Array.isArray(text)
 				? text.map((t, index) => {
-						console.log(t);
 						return (
 							<span key={index} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
 								{t}

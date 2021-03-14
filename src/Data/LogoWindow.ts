@@ -65,7 +65,7 @@ export const DATA_LOGOWINDOW_ARR: LogoWindowProps[] = [
 	{
 		id: 3,
 		name: "Haein Seo",
-		title: "혜인 타이틀",
+		title: "D; MVP",
 		image: window_4,
 		illust: window_4_illust,
 		height: 30.357139587402344,
@@ -109,7 +109,7 @@ export const DATA_LOGOWINDOW_ARR: LogoWindowProps[] = [
 	{
 		id: 7,
 		name: "Yoonseo Ko",
-		title: "윤서 타이틀",
+		title: "Meet There! 나의 가면찾기",
 		image: window_8,
 		illust: window_8_illust,
 		height: 10.178570747375488,

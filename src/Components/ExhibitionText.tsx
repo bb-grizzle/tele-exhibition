@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import React, { useState, useEffect, useRef } from "react";
+import styled, { css } from "styled-components";
+
 import Title from "./Text/Title";
 import Paragraph from "./Text/Paragraph";
 import { DATA_MEMBER_ARR, DATA_DESCRIPTION } from "../Data/TextData";
@@ -31,6 +32,8 @@ const MemberWrapper = styled(TextWrapper)`
 const DateWrapper = styled(TextWrapper)`
 	left: 0;
 	bottom: 0;
+	display: flex;
+	flex-direction: column;
 `;
 const DescriptWrapper = styled(TextWrapper)`
 	right: 0;
@@ -113,11 +116,77 @@ const BtnClose = styled(Paragraph)`
 	}
 `;
 
+const NameText = styled(Paragraph)`
+	padding-top: 16px;
+`;
+const LinkText = styled(Title)<{ active: boolean }>`
+	${(props) =>
+		props.active &&
+		css`
+			cursor: pointer;
+			&:hover {
+				text-decoration: underline;
+			}
+		`};
+`;
+const TimerWrapper = styled.div`
+	display: flex;
+`;
+
+const TimeDayText = styled(Title)`
+	margin-right: 16px;
+`;
+const TimeText = styled(Title)`
+	font-weight: lighter;
+`;
+
 const ExhibitionText = () => {
 	const [filterMember, setFilterMember] = useState<string | string[]>("");
 	const { isAboutClicked, setIsAboutClicked } = useIsAboutClicked();
 	const { nowData } = useNowData();
 	const [detailTitle, setDetailTitle] = useState("");
+	const [endTime, setEndTime] = useState<Date>();
+	const [nowDate, setNowDate] = useState<Date>();
+	const [timerDays, setTimerDays] = useState<string>();
+	const [timerTimes, setTimerTimes] = useState<string>();
+	let interval = useRef(setInterval(() => null));
+
+	useEffect(() => {
+		setEndTime(new Date("03/20/2021 00:00 AM'"));
+
+		clearInterval(interval.current);
+		interval.current = setInterval(() => {
+			const nowDate = new Date();
+			setNowDate(nowDate);
+		}, [100]);
+
+		return () => clearInterval(interval.current);
+	}, []);
+
+	useEffect(() => {
+		if (nowDate && endTime) {
+			const test = endTime.getTime() - nowDate.getTime();
+			if (test > 0) {
+				const milSecond = 100;
+				var _second = 1000;
+				var _minute = _second * 60;
+				var _hour = _minute * 60;
+				var _day = _hour * 24;
+
+				var days = Math.floor(test / _day);
+				var hours = Math.floor((test % _day) / _hour);
+				var minutes = Math.floor((test % _hour) / _minute);
+				var seconds = Math.floor((test % _minute) / _second);
+				var milseconds = Math.floor((test % _second) / milSecond);
+
+				setTimerDays(`${days}`);
+				setTimerTimes(`${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 10 ? `0${seconds}${milseconds}` : `${seconds}${milseconds}`}`);
+			} else {
+				setTimerDays(undefined);
+				setTimerTimes(undefined);
+			}
+		}
+	}, [nowDate, endTime]);
 
 	useEffect(() => {
 		if (nowData) {
@@ -141,6 +210,11 @@ const ExhibitionText = () => {
 		setFilterMember([row_1, row_2]);
 	}, []);
 
+	const handleLinkClick = () => {
+		console.log("test");
+		window.location.href = "https://naver.com";
+	};
+
 	return (
 		<Wrapper>
 			<TitleWrapper>
@@ -151,6 +225,7 @@ const ExhibitionText = () => {
 
 				<ParagraphWrapper>
 					<Paragraph text={["건국대학교 산업디자인학과 코딩동아리", "D;의 첫번째 온라인 전시"]} />
+					{nowData && nowData.name && <NameText text={nowData.name} />}
 
 					{/* mobile view */}
 					<MemberTextMobile text={filterMember} />
@@ -164,7 +239,15 @@ const ExhibitionText = () => {
 			</MemberWrapper>
 
 			<DateWrapper>
-				<Title text={"2020 / 11/ 28 SAT - "} />
+				<Title text={"2021 / 3/ 20 SAT - "} />
+				{timerDays && timerTimes ? (
+					<TimerWrapper>
+						<TimeDayText text={`D - ${timerDays}`} />
+						<TimeText text={timerTimes} />
+					</TimerWrapper>
+				) : (
+					<LinkText text={"VIEW EXHIBITION >"} active={true} onClick={handleLinkClick} />
+				)}
 			</DateWrapper>
 
 			<DescriptWrapper>

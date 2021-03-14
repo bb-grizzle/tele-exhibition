@@ -5,6 +5,7 @@ import media from "../../Style/Media";
 interface TitleProps {
 	text: string;
 	className?: string;
+	onClick?: () => void;
 }
 
 const Text = styled.h1`
@@ -17,8 +18,12 @@ const Text = styled.h1`
 	}
 `;
 
-const Title: React.FC<TitleProps> = ({ text, className }) => {
-	return <Text className={className}>{text}</Text>;
+const Title: React.FC<TitleProps> = ({ text, className, onClick }) => {
+	return (
+		<Text className={className} onClick={onClick}>
+			{text}
+		</Text>
+	);
 };
 
 export default Title;
