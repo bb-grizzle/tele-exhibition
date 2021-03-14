@@ -54,7 +54,7 @@ export const DATA_LOGOWINDOW_ARR: LogoWindowProps[] = [
 	{
 		id: 2,
 		name: "Jieun Lee",
-		title: "지은 타이틀",
+		title: "gaengsaeng",
 		image: window_3,
 		illust: window_3_illust,
 		height: 8.749999046325684,
