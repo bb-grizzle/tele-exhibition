@@ -108,7 +108,7 @@ export const DATA_LOGOWINDOW_ARR: LogoWindowProps[] = [
 	},
 	{
 		id: 7,
-		name: "Yunseon Go",
+		name: "Yunseo Go",
 		title: "Meet There! 나의 가면찾기",
 		image: window_8,
 		illust: window_8_illust,
