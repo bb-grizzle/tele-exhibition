@@ -11,7 +11,6 @@ const Wrapper = styled.div`
 	${(props) => props.theme.size.fullHeight};
 	display: flex;
 	position: relative;
-
 	overflow: hidden;
 
 	@media ${media.tablet} {
@@ -26,11 +25,13 @@ const Inner = styled.div`
 
 const App = () => {
 	useEffect(() => {
-		window.addEventListener("resize", () => {
-			// We execute the same script as before
+		const resizeHeight = () => {
 			let vh = window.innerHeight * 0.01;
 			document.documentElement.style.setProperty("--vh", `${vh}px`);
-		});
+		};
+		resizeHeight();
+		window.addEventListener("resize", resizeHeight);
+		return () => window.removeEventListener("resize", resizeHeight);
 	}, []);
 
 	return (

@@ -152,7 +152,9 @@ const ExhibitionText = () => {
 	let interval = useRef(setInterval(() => null));
 
 	useEffect(() => {
-		setEndTime(new Date("03/20/2021 00:00 AM'"));
+		// setEndTime(new Date("03/20/2021 00:00 AM'"));
+		setEndTime(new Date(2021, 2, 20, 23, 59, 59));
+		// 2020,06,12,23,59,59
 
 		clearInterval(interval.current);
 		interval.current = setInterval(() => {
@@ -166,6 +168,7 @@ const ExhibitionText = () => {
 	useEffect(() => {
 		if (nowDate && endTime) {
 			const test = endTime.getTime() - nowDate.getTime();
+
 			if (test > 0) {
 				const milSecond = 100;
 				var _second = 1000;
@@ -239,8 +242,9 @@ const ExhibitionText = () => {
 			</MemberWrapper>
 
 			<DateWrapper>
-				<Title text={"2021 / 3/ 20 SAT - "} />
-				{timerDays && timerTimes ? (
+				<Title text={"2021 / 3 / 20 SAT - "} />
+
+				{timerDays !== undefined && timerTimes !== undefined ? (
 					<TimerWrapper>
 						<TimeDayText text={`D - ${timerDays}`} />
 						<TimeText text={timerTimes} />
