@@ -6,6 +6,7 @@ import Paragraph from "./Text/Paragraph";
 import { DATA_MEMBER_ARR, DATA_DESCRIPTION } from "../Data/TextData";
 import media from "../Style/Media";
 import { useIsAboutClicked, useNowData } from "../Context/AppProvider";
+import useWindowSize from "../Hook/useWindowSize";
 
 const Wrapper = styled.div`
 	color: white;
@@ -150,6 +151,7 @@ const ExhibitionText = () => {
 	const [timerDays, setTimerDays] = useState<string>();
 	const [timerTimes, setTimerTimes] = useState<string>();
 	let interval = useRef(setInterval(() => null));
+	const { isTablet } = useWindowSize();
 
 	useEffect(() => {
 		// setEndTime(new Date("03/20/2021 00:00 AM'"));
@@ -214,7 +216,6 @@ const ExhibitionText = () => {
 	}, []);
 
 	const handleLinkClick = () => {
-		console.log("test");
 		window.location.href = "https://naver.com";
 	};
 
@@ -231,7 +232,7 @@ const ExhibitionText = () => {
 					{nowData && nowData.name && <NameText text={nowData.name} />}
 
 					{/* mobile view */}
-					<MemberTextMobile text={filterMember} />
+					{nowData ? nowData.name ? null : <MemberTextMobile text={filterMember} /> : <MemberTextMobile text={filterMember} />}
 					<DescriptionMobile text={DATA_DESCRIPTION} active={isAboutClicked} />
 					<BtnClose text={isAboutClicked ? "닫기" : "더보기"} onClick={() => setIsAboutClicked((prev) => !prev)} />
 				</ParagraphWrapper>
