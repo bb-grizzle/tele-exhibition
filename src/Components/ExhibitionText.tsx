@@ -6,7 +6,6 @@ import Paragraph from "./Text/Paragraph";
 import { DATA_MEMBER_ARR, DATA_DESCRIPTION } from "../Data/TextData";
 import media from "../Style/Media";
 import { useIsAboutClicked, useNowData } from "../Context/AppProvider";
-import useWindowSize from "../Hook/useWindowSize";
 
 const Wrapper = styled.div`
 	color: white;
@@ -151,7 +150,6 @@ const ExhibitionText = () => {
 	const [timerDays, setTimerDays] = useState<string>();
 	const [timerTimes, setTimerTimes] = useState<string>();
 	let interval = useRef(setInterval(() => null));
-	const { isTablet } = useWindowSize();
 
 	useEffect(() => {
 		// setEndTime(new Date("03/20/2021 00:00 AM'"));
