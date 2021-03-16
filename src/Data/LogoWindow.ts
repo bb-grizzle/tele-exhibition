@@ -20,6 +20,7 @@ export interface LogoWindowProps {
 	id: number;
 	name: string | undefined;
 	title: string | undefined;
+	mobileTitle?: string | undefined;
 	width: number;
 	height: number;
 	left: number;
@@ -110,6 +111,7 @@ export const DATA_LOGOWINDOW_ARR: LogoWindowProps[] = [
 		id: 7,
 		name: "Yunseo Go",
 		title: "Meet There! 나의 가면찾기",
+		mobileTitle: "Meet There!",
 		image: window_8,
 		illust: window_8_illust,
 		height: 10.178570747375488,

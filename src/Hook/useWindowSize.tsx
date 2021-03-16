@@ -7,12 +7,14 @@ const useWindowSize = () => {
 
 	useEffect(() => {
 		const handleResize = () => {
+			console.log("resize");
 			setSize({ width: window.innerWidth, height: window.innerHeight });
 			setIsTablet(window.innerWidth < BREAKPOINT_TABLET);
 		};
+		handleResize();
 		window.addEventListener("resize", handleResize);
 
-		return window.removeEventListener("resize", handleResize);
+		return () => window.removeEventListener("resize", handleResize);
 	}, []);
 
 	return { size, isTablet };

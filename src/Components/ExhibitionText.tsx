@@ -6,6 +6,7 @@ import Paragraph from "./Text/Paragraph";
 import { DATA_MEMBER_ARR, DATA_DESCRIPTION } from "../Data/TextData";
 import media from "../Style/Media";
 import { useIsAboutClicked, useNowData } from "../Context/AppProvider";
+import useWindowSize from "../Hook/useWindowSize";
 
 const Wrapper = styled.div`
 	color: white;
@@ -70,8 +71,8 @@ const DetailTitle = styled(TitleCustom)<{ active: boolean }>`
 	left: 0;
 	top: 0;
 	background-color: black;
-	height: 50vh;
-	max-height: ${(props) => (props.active ? "50vh" : 0)};
+	height: 100vh;
+	max-height: ${(props) => (props.active ? "100vh" : 0)};
 	opacity: ${(props) => (props.active ? 1 : 0)};
 	overflow: hidden;
 	transition: max-height 1s ${(props) => props.theme.transition.default} opacity 1s ${(props) => props.theme.transition.default};
@@ -149,6 +150,7 @@ const ExhibitionText = () => {
 	const [nowDate, setNowDate] = useState<Date>();
 	const [timerDays, setTimerDays] = useState<string>();
 	const [timerTimes, setTimerTimes] = useState<string>();
+	const { isTablet, size } = useWindowSize();
 	let interval = useRef(setInterval(() => null));
 
 	useEffect(() => {
@@ -193,9 +195,20 @@ const ExhibitionText = () => {
 
 	useEffect(() => {
 		if (nowData) {
-			setDetailTitle(nowData.title ? nowData.title : "");
+			console.log(isTablet);
+
+			if (isTablet || size.height < 780) {
+				if (nowData.mobileTitle) {
+					console.log(nowData.mobileTitle);
+					setDetailTitle(nowData.mobileTitle);
+				} else {
+					setDetailTitle(nowData.title ? nowData.title : "");
+				}
+			} else {
+				setDetailTitle(nowData.title ? nowData.title : "");
+			}
 		}
-	}, [nowData]);
+	}, [nowData, isTablet, size]);
 
 	useEffect(() => {
 		const cutCount = Math.round(DATA_MEMBER_ARR.length / 2);
