@@ -227,7 +227,7 @@ const ExhibitionText = () => {
 	}, []);
 
 	const handleLinkClick = () => {
-		window.location.href = "https://naver.com";
+		window.location.href = "https://home-exhibition.web.app/";
 	};
 
 	return (
